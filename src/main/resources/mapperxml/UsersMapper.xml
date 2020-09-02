@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jonnyhub.lmimghub.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Users">
+    <!--@mbg.generated-->
+    <!--@Table lm_imghub_db.imghub_users-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="ua" jdbcType="VARCHAR" property="ua" />
+    <result column="reg_time" jdbcType="TIMESTAMP" property="regTime" />
+    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+    <result column="up_limit" jdbcType="INTEGER" property="upLimit" />
+    <result column="status" jdbcType="LONGVARCHAR" property="status" />
+    <result column="storage" jdbcType="VARCHAR" property="storage" />
+    <result column="up_num" jdbcType="INTEGER" property="upNum" />
+    <result column="others" jdbcType="LONGVARCHAR" property="others" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `uid`, username, email, `password`, ip, ua, reg_time, last_login, up_limit, `status`, 
+    `storage`, up_num, `others`
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update lm_imghub_db.imghub_users
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`uid` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.uid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="username = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.username,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.email,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`password` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.password,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ip = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.ip,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ua = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.ua,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="reg_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.regTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="last_login = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.lastLogin,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="up_limit = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.upLimit,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`storage` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.storage,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="up_num = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.upNum,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`others` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update lm_imghub_db.imghub_users
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`uid` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.uid != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.uid,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="username = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.username != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.username,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.email != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.email,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`password` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.password != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.password,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="ip = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.ip != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.ip,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="ua = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.ua != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.ua,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="reg_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.regTime != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.regTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="last_login = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.lastLogin != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.lastLogin,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="up_limit = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.upLimit != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.upLimit,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.status != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=LONGVARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`storage` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.storage != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.storage,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="up_num = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.upNum != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.upNum,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`others` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.others != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=LONGVARCHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_users
+    (`uid`, username, email, `password`, ip, ua, reg_time, last_login, up_limit, `status`, 
+      `storage`, up_num, `others`)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.uid,jdbcType=VARCHAR}, #{item.username,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}, 
+        #{item.password,jdbcType=VARCHAR}, #{item.ip,jdbcType=VARCHAR}, #{item.ua,jdbcType=VARCHAR}, 
+        #{item.regTime,jdbcType=TIMESTAMP}, #{item.lastLogin,jdbcType=TIMESTAMP}, #{item.upLimit,jdbcType=INTEGER}, 
+        #{item.status,jdbcType=LONGVARCHAR}, #{item.storage,jdbcType=VARCHAR}, #{item.upNum,jdbcType=INTEGER}, 
+        #{item.others,jdbcType=LONGVARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Users" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      `uid`,
+      username,
+      email,
+      `password`,
+      ip,
+      ua,
+      reg_time,
+      last_login,
+      up_limit,
+      `status`,
+      `storage`,
+      up_num,
+      `others`,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{uid,jdbcType=VARCHAR},
+      #{username,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR},
+      #{ip,jdbcType=VARCHAR},
+      #{ua,jdbcType=VARCHAR},
+      #{regTime,jdbcType=TIMESTAMP},
+      #{lastLogin,jdbcType=TIMESTAMP},
+      #{upLimit,jdbcType=INTEGER},
+      #{status,jdbcType=LONGVARCHAR},
+      #{storage,jdbcType=VARCHAR},
+      #{upNum,jdbcType=INTEGER},
+      #{others,jdbcType=LONGVARCHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      `uid` = #{uid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      ua = #{ua,jdbcType=VARCHAR},
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
+      last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      up_limit = #{upLimit,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=LONGVARCHAR},
+      `storage` = #{storage,jdbcType=VARCHAR},
+      up_num = #{upNum,jdbcType=INTEGER},
+      `others` = #{others,jdbcType=LONGVARCHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Users" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        `uid`,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="ua != null">
+        ua,
+      </if>
+      <if test="regTime != null">
+        reg_time,
+      </if>
+      <if test="lastLogin != null">
+        last_login,
+      </if>
+      <if test="upLimit != null">
+        up_limit,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="storage != null">
+        `storage`,
+      </if>
+      <if test="upNum != null">
+        up_num,
+      </if>
+      <if test="others != null">
+        `others`,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="ua != null">
+        #{ua,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null">
+        #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogin != null">
+        #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upLimit != null">
+        #{upLimit,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storage != null">
+        #{storage,jdbcType=VARCHAR},
+      </if>
+      <if test="upNum != null">
+        #{upNum,jdbcType=INTEGER},
+      </if>
+      <if test="others != null">
+        #{others,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        `uid` = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="ua != null">
+        ua = #{ua,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null">
+        reg_time = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogin != null">
+        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upLimit != null">
+        up_limit = #{upLimit,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storage != null">
+        `storage` = #{storage,jdbcType=VARCHAR},
+      </if>
+      <if test="upNum != null">
+        up_num = #{upNum,jdbcType=INTEGER},
+      </if>
+      <if test="others != null">
+        `others` = #{others,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

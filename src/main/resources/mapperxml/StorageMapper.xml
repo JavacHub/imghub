@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jonnyhub.lmimghub.mapper.StorageMapper">
+  <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Storage">
+    <!--@mbg.generated-->
+    <!--@Table lm_imghub_db.imghub_storage-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="engine" jdbcType="VARCHAR" property="engine" />
+    <result column="domains" jdbcType="VARCHAR" property="domains" />
+    <result column="info" jdbcType="LONGVARCHAR" property="info" />
+    <result column="reversal" jdbcType="VARCHAR" property="reversal" />
+    <result column="weight" jdbcType="TINYINT" property="weight" />
+    <result column="permission" jdbcType="BOOLEAN" property="permission" />
+    <result column="others" jdbcType="VARCHAR" property="others" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, engine, domains, info, reversal, weight, permission, `others`
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update lm_imghub_db.imghub_storage
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="engine = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.engine,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="domains = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.domains,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="info = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.info,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="reversal = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.reversal,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="weight = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.weight,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="permission = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.permission,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="`others` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update lm_imghub_db.imghub_storage
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.name != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.name,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="engine = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.engine != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.engine,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="domains = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.domains != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.domains,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="info = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.info != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.info,jdbcType=LONGVARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="reversal = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.reversal != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.reversal,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="weight = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.weight != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.weight,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="permission = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.permission != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.permission,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`others` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.others != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_storage
+    (`name`, engine, domains, info, reversal, weight, permission, `others`)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.name,jdbcType=VARCHAR}, #{item.engine,jdbcType=VARCHAR}, #{item.domains,jdbcType=VARCHAR}, 
+        #{item.info,jdbcType=LONGVARCHAR}, #{item.reversal,jdbcType=VARCHAR}, #{item.weight,jdbcType=TINYINT}, 
+        #{item.permission,jdbcType=BOOLEAN}, #{item.others,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Storage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_storage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      `name`,
+      engine,
+      domains,
+      info,
+      reversal,
+      weight,
+      permission,
+      `others`,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{name,jdbcType=VARCHAR},
+      #{engine,jdbcType=VARCHAR},
+      #{domains,jdbcType=VARCHAR},
+      #{info,jdbcType=LONGVARCHAR},
+      #{reversal,jdbcType=VARCHAR},
+      #{weight,jdbcType=TINYINT},
+      #{permission,jdbcType=BOOLEAN},
+      #{others,jdbcType=VARCHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      `name` = #{name,jdbcType=VARCHAR},
+      engine = #{engine,jdbcType=VARCHAR},
+      domains = #{domains,jdbcType=VARCHAR},
+      info = #{info,jdbcType=LONGVARCHAR},
+      reversal = #{reversal,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=TINYINT},
+      permission = #{permission,jdbcType=BOOLEAN},
+      `others` = #{others,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Storage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_storage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="engine != null">
+        engine,
+      </if>
+      <if test="domains != null">
+        domains,
+      </if>
+      <if test="info != null">
+        info,
+      </if>
+      <if test="reversal != null">
+        reversal,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="others != null">
+        `others`,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null">
+        #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="domains != null">
+        #{domains,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        #{info,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="reversal != null">
+        #{reversal,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=TINYINT},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=BOOLEAN},
+      </if>
+      <if test="others != null">
+        #{others,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null">
+        engine = #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="domains != null">
+        domains = #{domains,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        info = #{info,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="reversal != null">
+        reversal = #{reversal,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=TINYINT},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=BOOLEAN},
+      </if>
+      <if test="others != null">
+        `others` = #{others,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

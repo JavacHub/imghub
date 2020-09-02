@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jonnyhub.lmimghub.mapper.InviteMapper">
+  <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Invite">
+    <!--@mbg.generated-->
+    <!--@Table lm_imghub_db.imghub_invite-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="exp_time" jdbcType="TIMESTAMP" property="expTime" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="LONGVARCHAR" property="status" />
+    <result column="others" jdbcType="LONGVARCHAR" property="others" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, invite_code, creat_time, exp_time, email, `status`, `others`
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update lm_imghub_db.imghub_invite
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="invite_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.inviteCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="creat_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.creatTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="exp_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.expTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.email,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`others` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update lm_imghub_db.imghub_invite
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="invite_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.inviteCode != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.inviteCode,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="creat_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.creatTime != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.creatTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="exp_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.expTime != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.expTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.email != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.email,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.status != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=LONGVARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`others` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.others != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=LONGVARCHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_invite
+    (invite_code, creat_time, exp_time, email, `status`, `others`)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.inviteCode,jdbcType=VARCHAR}, #{item.creatTime,jdbcType=TIMESTAMP}, #{item.expTime,jdbcType=TIMESTAMP}, 
+        #{item.email,jdbcType=VARCHAR}, #{item.status,jdbcType=LONGVARCHAR}, #{item.others,jdbcType=LONGVARCHAR}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Invite" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_invite
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      invite_code,
+      creat_time,
+      exp_time,
+      email,
+      `status`,
+      `others`,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{inviteCode,jdbcType=VARCHAR},
+      #{creatTime,jdbcType=TIMESTAMP},
+      #{expTime,jdbcType=TIMESTAMP},
+      #{email,jdbcType=VARCHAR},
+      #{status,jdbcType=LONGVARCHAR},
+      #{others,jdbcType=LONGVARCHAR},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      invite_code = #{inviteCode,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      exp_time = #{expTime,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=LONGVARCHAR},
+      `others` = #{others,jdbcType=LONGVARCHAR},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Invite" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into lm_imghub_db.imghub_invite
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="inviteCode != null">
+        invite_code,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="expTime != null">
+        exp_time,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="others != null">
+        `others`,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expTime != null">
+        #{expTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="others != null">
+        #{others,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expTime != null">
+        exp_time = #{expTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="others != null">
+        `others` = #{others,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
