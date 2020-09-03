@@ -1,39 +1,39 @@
-package com.jonnyhub.lmimghub.dao.impl;
+package com.jonnyhub.lmimghub.service.impl;
 
 import java.util.List;
 
-import com.jonnyhub.lmimghub.dao.ImginfoService;
+import com.jonnyhub.lmimghub.entity.ImginfoEntity;
 import com.jonnyhub.lmimghub.mapper.ImginfoMapper;
-import com.jonnyhub.lmimghub.model.Imginfo;
+import com.jonnyhub.lmimghub.service.ImginfoService;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ImginfoServiceImpl extends ServiceImpl<ImginfoMapper, Imginfo> implements ImginfoService {
+public class ImginfoServiceImpl extends ServiceImpl<ImginfoMapper, ImginfoEntity> implements ImginfoService {
 
     @Override
-    public int updateBatch(List<Imginfo> list) {
+    public int updateBatch(List<ImginfoEntity> list) {
         return baseMapper.updateBatch(list);
     }
 
     @Override
-    public int updateBatchSelective(List<Imginfo> list) {
+    public int updateBatchSelective(List<ImginfoEntity> list) {
         return baseMapper.updateBatchSelective(list);
     }
 
     @Override
-    public int batchInsert(List<Imginfo> list) {
+    public int batchInsert(List<ImginfoEntity> list) {
         return baseMapper.batchInsert(list);
     }
 
     @Override
-    public int insertOrUpdate(Imginfo record) {
+    public int insertOrUpdate(ImginfoEntity record) {
         return baseMapper.insertOrUpdate(record);
     }
 
     @Override
-    public int insertOrUpdateSelective(Imginfo record) {
+    public int insertOrUpdateSelective(ImginfoEntity record) {
         return baseMapper.insertOrUpdateSelective(record);
     }
 }

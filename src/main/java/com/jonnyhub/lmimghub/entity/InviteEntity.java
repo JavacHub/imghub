@@ -1,4 +1,4 @@
-package com.jonnyhub.lmimghub.model;
+package com.jonnyhub.lmimghub.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,10 +11,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-@ApiModel(value = "com-jonnyhub-lmimghub-model-Invite")
+@ApiModel(value = "com-jonnyhub-lmimghub-model-InviteEntity")
 @Data
 @TableName(value = "lm_imghub_db.imghub_invite")
-public class Invite implements Serializable {
+public class InviteEntity implements Serializable {
     public static final  String  COL_ID           = "id";
     public static final  String  COL_INVITE_CODE  = "invite_code";
     public static final  String  COL_CREAT_TIME   = "creat_time";
@@ -24,7 +24,7 @@ public class Invite implements Serializable {
     public static final  String  COL_OTHERS       = "others";
     private static final long    serialVersionUID = 1L;
     @TableId(value = "id", type = IdType.INPUT)
-    @ApiModelProperty(value = "")
+    @ApiModelProperty()
     private              Integer id;
     /**
      * 邀请码

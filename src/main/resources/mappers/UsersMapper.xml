@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jonnyhub.lmimghub.mapper.UsersMapper">
-    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Users">
+    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.entity.UsersEntity">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_users-->
         <id column="id" jdbcType="INTEGER" property="id" />
@@ -214,7 +214,8 @@
             #{item.others,jdbcType=LONGVARCHAR})
         </foreach>
     </insert>
-    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Users" useGeneratedKeys="true">
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.entity.UsersEntity"
+            useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into lm_imghub_db.imghub_users
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -274,7 +275,7 @@
             `others` = #{others,jdbcType=LONGVARCHAR},
         </trim>
     </insert>
-    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Users"
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.entity.UsersEntity"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into lm_imghub_db.imghub_users

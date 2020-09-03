@@ -1,4 +1,4 @@
-package com.jonnyhub.lmimghub.model;
+package com.jonnyhub.lmimghub.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,10 +11,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-@ApiModel(value = "com-jonnyhub-lmimghub-model-Users")
+@ApiModel(value = "com-jonnyhub-lmimghub-model-UsersEntity")
 @Data
 @TableName(value = "lm_imghub_db.imghub_users")
-public class Users implements Serializable {
+public class UsersEntity implements Serializable {
     public static final  String  COL_ID           = "id";
     public static final  String  COL_UID          = "uid";
     public static final  String  COL_USERNAME     = "username";
@@ -31,7 +31,7 @@ public class Users implements Serializable {
     public static final  String  COL_OTHERS       = "others";
     private static final long    serialVersionUID = 1L;
     @TableId(value = "id", type = IdType.INPUT)
-    @ApiModelProperty(value = "")
+    @ApiModelProperty()
     private              Integer id;
     /**
      * 用户UID

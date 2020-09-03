@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jonnyhub.lmimghub.mapper.OptionsMapper">
-    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Options">
+    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.entity.OptionsEntity">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_options-->
         <id column="id" jdbcType="INTEGER" property="id" />
@@ -79,7 +79,8 @@
             )
         </foreach>
     </insert>
-    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Options" useGeneratedKeys="true">
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.entity.OptionsEntity"
+            useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into lm_imghub_db.imghub_options
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -109,7 +110,7 @@
             option_switch = #{optionSwitch,jdbcType=VARCHAR},
         </trim>
     </insert>
-    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Options"
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.entity.OptionsEntity"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into lm_imghub_db.imghub_options

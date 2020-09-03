@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jonnyhub.lmimghub.mapper.StorageMapper">
-    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Storage">
+    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.entity.StorageEntity">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_storage-->
         <id column="id" jdbcType="INTEGER" property="id" />
@@ -145,7 +145,8 @@
             #{item.permission,jdbcType=BOOLEAN}, #{item.others,jdbcType=VARCHAR})
         </foreach>
     </insert>
-    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Storage" useGeneratedKeys="true">
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.entity.StorageEntity"
+            useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into lm_imghub_db.imghub_storage
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -190,7 +191,7 @@
             `others` = #{others,jdbcType=VARCHAR},
         </trim>
     </insert>
-    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Storage"
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.entity.StorageEntity"
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into lm_imghub_db.imghub_storage

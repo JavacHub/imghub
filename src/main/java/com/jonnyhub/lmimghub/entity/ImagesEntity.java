@@ -1,4 +1,4 @@
-package com.jonnyhub.lmimghub.model;
+package com.jonnyhub.lmimghub.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,10 +11,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-@ApiModel(value = "com-jonnyhub-lmimghub-model-Images")
+@ApiModel(value = "com-jonnyhub-lmimghub-model-ImagesEntity")
 @Data
 @TableName(value = "lm_imghub_db.imghub_images")
-public class Images implements Serializable {
+public class ImagesEntity implements Serializable {
     public static final  String  COL_ID           = "id";
     public static final  String  COL_IMGID        = "imgid";
     public static final  String  COL_PATH         = "path";

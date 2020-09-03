@@ -2,21 +2,21 @@ package com.jonnyhub.lmimghub.mapper;
 
 import java.util.List;
 
-import com.jonnyhub.lmimghub.model.Storage;
+import com.jonnyhub.lmimghub.entity.StorageEntity;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface StorageMapper extends BaseMapper<Storage> {
-    int updateBatch(List<Storage> list);
+public interface StorageMapper extends BaseMapper<StorageEntity> {
+    int updateBatch(List<StorageEntity> list);
 
-    int updateBatchSelective(List<Storage> list);
+    int updateBatchSelective(List<StorageEntity> list);
 
-    int batchInsert(@Param("list") List<Storage> list);
+    int batchInsert(@Param("list") List<StorageEntity> list);
 
-    int insertOrUpdate(Storage record);
+    int insertOrUpdate(StorageEntity record);
 
-    int insertOrUpdateSelective(Storage record);
+    int insertOrUpdateSelective(StorageEntity record);
 }
