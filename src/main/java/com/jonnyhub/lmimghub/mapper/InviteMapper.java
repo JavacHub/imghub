@@ -1,8 +1,10 @@
 package com.jonnyhub.lmimghub.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jonnyhub.lmimghub.model.Invite;
 import java.util.List;
+
+import com.jonnyhub.lmimghub.model.Invite;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

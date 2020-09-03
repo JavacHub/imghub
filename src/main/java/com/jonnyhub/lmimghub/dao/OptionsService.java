@@ -1,10 +1,12 @@
-package com.jonnyhub.lmimghub.dao.impl;
+package com.jonnyhub.lmimghub.dao;
 
 import java.util.List;
-import com.jonnyhub.lmimghub.model.Options;
-import com.baomidou.mybatisplus.extension.service.IService;
-public interface OptionsService extends IService<Options>{
 
+import com.jonnyhub.lmimghub.model.Options;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+
+public interface OptionsService extends IService<Options> {
 
     int updateBatch(List<Options> list);
 

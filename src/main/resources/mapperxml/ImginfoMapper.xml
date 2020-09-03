@@ -1,337 +1,338 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jonnyhub.lmimghub.mapper.ImginfoMapper">
-  <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Imginfo">
-    <!--@mbg.generated-->
-    <!--@Table lm_imghub_db.imghub_imginfo-->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="imgid" jdbcType="VARCHAR" property="imgid" />
-    <result column="mime" jdbcType="VARCHAR" property="mime" />
-    <result column="width" jdbcType="DOUBLE" property="width" />
-    <result column="height" jdbcType="DOUBLE" property="height" />
-    <result column="views" jdbcType="INTEGER" property="views" />
-    <result column="ext" jdbcType="VARCHAR" property="ext" />
-    <result column="client_name" jdbcType="VARCHAR" property="clientName" />
-    <result column="tags" jdbcType="VARCHAR" property="tags" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="size" jdbcType="DOUBLE" property="size" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, imgid, mime, width, height, views, ext, client_name, tags, description, `size`
-  </sql>
-  <update id="updateBatch" parameterType="java.util.List">
-    <!--@mbg.generated-->
-    update lm_imghub_db.imghub_imginfo
-    <trim prefix="set" suffixOverrides=",">
-      <trim prefix="imgid = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.imgid,jdbcType=VARCHAR}
+    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Imginfo">
+        <!--@mbg.generated-->
+        <!--@Table lm_imghub_db.imghub_imginfo-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="imgid" jdbcType="VARCHAR" property="imgid"/>
+        <result column="mime" jdbcType="VARCHAR" property="mime"/>
+        <result column="width" jdbcType="DOUBLE" property="width"/>
+        <result column="height" jdbcType="DOUBLE" property="height"/>
+        <result column="views" jdbcType="INTEGER" property="views"/>
+        <result column="ext" jdbcType="VARCHAR" property="ext"/>
+        <result column="client_name" jdbcType="VARCHAR" property="clientName"/>
+        <result column="tags" jdbcType="VARCHAR" property="tags"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="size" jdbcType="DOUBLE" property="size"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, imgid, mime, width, height, views, ext, client_name, tags, description, `size`
+    </sql>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update lm_imghub_db.imghub_imginfo
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="imgid = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.imgid,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="mime = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.mime,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="width = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.width,jdbcType=DOUBLE}
+                </foreach>
+            </trim>
+            <trim prefix="height = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.height,jdbcType=DOUBLE}
+                </foreach>
+            </trim>
+            <trim prefix="views = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.views,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="ext = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.ext,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="client_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.clientName,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="tags = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.tags,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="description = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.description,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`size` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.size,jdbcType=DOUBLE}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
         </foreach>
-      </trim>
-      <trim prefix="mime = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.mime,jdbcType=VARCHAR}
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update lm_imghub_db.imghub_imginfo
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="imgid = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.imgid != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.imgid,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="mime = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.mime != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.mime,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="width = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.width != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.width,jdbcType=DOUBLE}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="height = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.height != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.height,jdbcType=DOUBLE}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="views = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.views != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.views,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="ext = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.ext != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.ext,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="client_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.clientName != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.clientName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="tags = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.tags != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.tags,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="description = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.description != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.description,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`size` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.size != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.size,jdbcType=DOUBLE}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
         </foreach>
-      </trim>
-      <trim prefix="width = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.width,jdbcType=DOUBLE}
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lm_imghub_db.imghub_imginfo
+        (imgid, mime, width, height, views, ext, client_name, tags, description, `size`)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.imgid,jdbcType=VARCHAR}, #{item.mime,jdbcType=VARCHAR}, #{item.width,jdbcType=DOUBLE},
+            #{item.height,jdbcType=DOUBLE}, #{item.views,jdbcType=INTEGER}, #{item.ext,jdbcType=VARCHAR},
+            #{item.clientName,jdbcType=VARCHAR}, #{item.tags,jdbcType=VARCHAR}, #{item.description,jdbcType=VARCHAR},
+            #{item.size,jdbcType=DOUBLE})
         </foreach>
-      </trim>
-      <trim prefix="height = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.height,jdbcType=DOUBLE}
-        </foreach>
-      </trim>
-      <trim prefix="views = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.views,jdbcType=INTEGER}
-        </foreach>
-      </trim>
-      <trim prefix="ext = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.ext,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="client_name = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.clientName,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="tags = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.tags,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="description = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.description,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="`size` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.size,jdbcType=DOUBLE}
-        </foreach>
-      </trim>
-    </trim>
-    where id in
-    <foreach close=")" collection="list" item="item" open="(" separator=", ">
-      #{item.id,jdbcType=INTEGER}
-    </foreach>
-  </update>
-  <update id="updateBatchSelective" parameterType="java.util.List">
-    <!--@mbg.generated-->
-    update lm_imghub_db.imghub_imginfo
-    <trim prefix="set" suffixOverrides=",">
-      <trim prefix="imgid = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.imgid != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.imgid,jdbcType=VARCHAR}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="mime = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.mime != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.mime,jdbcType=VARCHAR}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="width = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.width != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.width,jdbcType=DOUBLE}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="height = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.height != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.height,jdbcType=DOUBLE}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="views = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.views != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.views,jdbcType=INTEGER}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="ext = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.ext != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.ext,jdbcType=VARCHAR}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="client_name = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.clientName != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.clientName,jdbcType=VARCHAR}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="tags = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.tags != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.tags,jdbcType=VARCHAR}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="description = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.description != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.description,jdbcType=VARCHAR}
-          </if>
-        </foreach>
-      </trim>
-      <trim prefix="`size` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          <if test="item.size != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.size,jdbcType=DOUBLE}
-          </if>
-        </foreach>
-      </trim>
-    </trim>
-    where id in
-    <foreach close=")" collection="list" item="item" open="(" separator=", ">
-      #{item.id,jdbcType=INTEGER}
-    </foreach>
-  </update>
-  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into lm_imghub_db.imghub_imginfo
-    (imgid, mime, width, height, views, ext, client_name, tags, description, `size`)
-    values
-    <foreach collection="list" item="item" separator=",">
-      (#{item.imgid,jdbcType=VARCHAR}, #{item.mime,jdbcType=VARCHAR}, #{item.width,jdbcType=DOUBLE}, 
-        #{item.height,jdbcType=DOUBLE}, #{item.views,jdbcType=INTEGER}, #{item.ext,jdbcType=VARCHAR}, 
-        #{item.clientName,jdbcType=VARCHAR}, #{item.tags,jdbcType=VARCHAR}, #{item.description,jdbcType=VARCHAR}, 
-        #{item.size,jdbcType=DOUBLE})
-    </foreach>
-  </insert>
-  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Imginfo" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into lm_imghub_db.imghub_imginfo
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      imgid,
-      mime,
-      width,
-      height,
-      views,
-      ext,
-      client_name,
-      tags,
-      description,
-      `size`,
-    </trim>
-    values
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      #{imgid,jdbcType=VARCHAR},
-      #{mime,jdbcType=VARCHAR},
-      #{width,jdbcType=DOUBLE},
-      #{height,jdbcType=DOUBLE},
-      #{views,jdbcType=INTEGER},
-      #{ext,jdbcType=VARCHAR},
-      #{clientName,jdbcType=VARCHAR},
-      #{tags,jdbcType=VARCHAR},
-      #{description,jdbcType=VARCHAR},
-      #{size,jdbcType=DOUBLE},
-    </trim>
-    on duplicate key update 
-    <trim suffixOverrides=",">
-      <if test="id != null">
-        id = #{id,jdbcType=INTEGER},
-      </if>
-      imgid = #{imgid,jdbcType=VARCHAR},
-      mime = #{mime,jdbcType=VARCHAR},
-      width = #{width,jdbcType=DOUBLE},
-      height = #{height,jdbcType=DOUBLE},
-      views = #{views,jdbcType=INTEGER},
-      ext = #{ext,jdbcType=VARCHAR},
-      client_name = #{clientName,jdbcType=VARCHAR},
-      tags = #{tags,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      `size` = #{size,jdbcType=DOUBLE},
-    </trim>
-  </insert>
-  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Imginfo" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into lm_imghub_db.imghub_imginfo
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="imgid != null">
-        imgid,
-      </if>
-      <if test="mime != null">
-        mime,
-      </if>
-      <if test="width != null">
-        width,
-      </if>
-      <if test="height != null">
-        height,
-      </if>
-      <if test="views != null">
-        views,
-      </if>
-      <if test="ext != null">
-        ext,
-      </if>
-      <if test="clientName != null">
-        client_name,
-      </if>
-      <if test="tags != null">
-        tags,
-      </if>
-      <if test="description != null">
-        description,
-      </if>
-      <if test="size != null">
-        `size`,
-      </if>
-    </trim>
-    values
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="imgid != null">
-        #{imgid,jdbcType=VARCHAR},
-      </if>
-      <if test="mime != null">
-        #{mime,jdbcType=VARCHAR},
-      </if>
-      <if test="width != null">
-        #{width,jdbcType=DOUBLE},
-      </if>
-      <if test="height != null">
-        #{height,jdbcType=DOUBLE},
-      </if>
-      <if test="views != null">
-        #{views,jdbcType=INTEGER},
-      </if>
-      <if test="ext != null">
-        #{ext,jdbcType=VARCHAR},
-      </if>
-      <if test="clientName != null">
-        #{clientName,jdbcType=VARCHAR},
-      </if>
-      <if test="tags != null">
-        #{tags,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="size != null">
-        #{size,jdbcType=DOUBLE},
-      </if>
-    </trim>
-    on duplicate key update 
-    <trim suffixOverrides=",">
-      <if test="id != null">
-        id = #{id,jdbcType=INTEGER},
-      </if>
-      <if test="imgid != null">
-        imgid = #{imgid,jdbcType=VARCHAR},
-      </if>
-      <if test="mime != null">
-        mime = #{mime,jdbcType=VARCHAR},
-      </if>
-      <if test="width != null">
-        width = #{width,jdbcType=DOUBLE},
-      </if>
-      <if test="height != null">
-        height = #{height,jdbcType=DOUBLE},
-      </if>
-      <if test="views != null">
-        views = #{views,jdbcType=INTEGER},
-      </if>
-      <if test="ext != null">
-        ext = #{ext,jdbcType=VARCHAR},
-      </if>
-      <if test="clientName != null">
-        client_name = #{clientName,jdbcType=VARCHAR},
-      </if>
-      <if test="tags != null">
-        tags = #{tags,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="size != null">
-        `size` = #{size,jdbcType=DOUBLE},
-      </if>
-    </trim>
-  </insert>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Imginfo" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lm_imghub_db.imghub_imginfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            imgid,
+            mime,
+            width,
+            height,
+            views,
+            ext,
+            client_name,
+            tags,
+            description,
+            `size`,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            #{imgid,jdbcType=VARCHAR},
+            #{mime,jdbcType=VARCHAR},
+            #{width,jdbcType=DOUBLE},
+            #{height,jdbcType=DOUBLE},
+            #{views,jdbcType=INTEGER},
+            #{ext,jdbcType=VARCHAR},
+            #{clientName,jdbcType=VARCHAR},
+            #{tags,jdbcType=VARCHAR},
+            #{description,jdbcType=VARCHAR},
+            #{size,jdbcType=DOUBLE},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            imgid = #{imgid,jdbcType=VARCHAR},
+            mime = #{mime,jdbcType=VARCHAR},
+            width = #{width,jdbcType=DOUBLE},
+            height = #{height,jdbcType=DOUBLE},
+            views = #{views,jdbcType=INTEGER},
+            ext = #{ext,jdbcType=VARCHAR},
+            client_name = #{clientName,jdbcType=VARCHAR},
+            tags = #{tags,jdbcType=VARCHAR},
+            description = #{description,jdbcType=VARCHAR},
+            `size` = #{size,jdbcType=DOUBLE},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Imginfo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lm_imghub_db.imghub_imginfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="imgid != null">
+                imgid,
+            </if>
+            <if test="mime != null">
+                mime,
+            </if>
+            <if test="width != null">
+                width,
+            </if>
+            <if test="height != null">
+                height,
+            </if>
+            <if test="views != null">
+                views,
+            </if>
+            <if test="ext != null">
+                ext,
+            </if>
+            <if test="clientName != null">
+                client_name,
+            </if>
+            <if test="tags != null">
+                tags,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="size != null">
+                `size`,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="imgid != null">
+                #{imgid,jdbcType=VARCHAR},
+            </if>
+            <if test="mime != null">
+                #{mime,jdbcType=VARCHAR},
+            </if>
+            <if test="width != null">
+                #{width,jdbcType=DOUBLE},
+            </if>
+            <if test="height != null">
+                #{height,jdbcType=DOUBLE},
+            </if>
+            <if test="views != null">
+                #{views,jdbcType=INTEGER},
+            </if>
+            <if test="ext != null">
+                #{ext,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="tags != null">
+                #{tags,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="size != null">
+                #{size,jdbcType=DOUBLE},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="imgid != null">
+                imgid = #{imgid,jdbcType=VARCHAR},
+            </if>
+            <if test="mime != null">
+                mime = #{mime,jdbcType=VARCHAR},
+            </if>
+            <if test="width != null">
+                width = #{width,jdbcType=DOUBLE},
+            </if>
+            <if test="height != null">
+                height = #{height,jdbcType=DOUBLE},
+            </if>
+            <if test="views != null">
+                views = #{views,jdbcType=INTEGER},
+            </if>
+            <if test="ext != null">
+                ext = #{ext,jdbcType=VARCHAR},
+            </if>
+            <if test="clientName != null">
+                client_name = #{clientName,jdbcType=VARCHAR},
+            </if>
+            <if test="tags != null">
+                tags = #{tags,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="size != null">
+                `size` = #{size,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
 </mapper>

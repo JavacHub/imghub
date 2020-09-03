@@ -1,10 +1,12 @@
-package com.jonnyhub.lmimghub.dao.impl;
+package com.jonnyhub.lmimghub.dao;
+
+import java.util.List;
 
 import com.jonnyhub.lmimghub.model.Users;
-import java.util.List;
-import com.baomidou.mybatisplus.extension.service.IService;
-public interface UsersService extends IService<Users>{
 
+import com.baomidou.mybatisplus.extension.service.IService;
+
+public interface UsersService extends IService<Users> {
 
     int updateBatch(List<Users> list);
 

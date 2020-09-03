@@ -1,10 +1,12 @@
-package com.jonnyhub.lmimghub.dao.impl;
+package com.jonnyhub.lmimghub.dao;
 
 import java.util.List;
-import com.jonnyhub.lmimghub.model.Storage;
-import com.baomidou.mybatisplus.extension.service.IService;
-public interface StorageService extends IService<Storage>{
 
+import com.jonnyhub.lmimghub.model.Storage;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+
+public interface StorageService extends IService<Storage> {
 
     int updateBatch(List<Storage> list);
 

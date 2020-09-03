@@ -1,10 +1,12 @@
-package com.jonnyhub.lmimghub.dao.impl;
+package com.jonnyhub.lmimghub.dao;
 
 import java.util.List;
-import com.jonnyhub.lmimghub.model.Imginfo;
-import com.baomidou.mybatisplus.extension.service.IService;
-public interface ImginfoService extends IService<Imginfo>{
 
+import com.jonnyhub.lmimghub.model.Imginfo;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+
+public interface ImginfoService extends IService<Imginfo> {
 
     int updateBatch(List<Imginfo> list);
 

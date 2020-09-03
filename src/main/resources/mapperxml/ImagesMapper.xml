@@ -1,314 +1,315 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jonnyhub.lmimghub.mapper.ImagesMapper">
-  <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Images">
-    <!--@mbg.generated-->
-    <!--@Table lm_imghub_db.imghub_images-->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="imgid" jdbcType="CHAR" property="imgid" />
-    <result column="path" jdbcType="CHAR" property="path" />
-    <result column="thumb_path" jdbcType="CHAR" property="thumbPath" />
-    <result column="storage" jdbcType="CHAR" property="storage" />
-    <result column="ip" jdbcType="CHAR" property="ip" />
-    <result column="ua" jdbcType="VARCHAR" property="ua" />
-    <result column="date" jdbcType="TIMESTAMP" property="date" />
-    <result column="user" jdbcType="VARCHAR" property="user" />
-    <result column="compression" jdbcType="TINYINT" property="compression" />
-    <result column="watermark" jdbcType="TINYINT" property="watermark" />
-    <result column="level" jdbcType="VARCHAR" property="level" />
-    <result column="others" jdbcType="LONGVARCHAR" property="others" />
-    <result column="token" jdbcType="VARCHAR" property="token" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, imgid, `path`, thumb_path, `storage`, ip, ua, `date`, `user`, compression, watermark, 
-    `level`, `others`, token
-  </sql>
-  <update id="updateBatch" parameterType="java.util.List">
-    <!--@mbg.generated-->
-    update lm_imghub_db.imghub_images
-    <trim prefix="set" suffixOverrides=",">
-      <trim prefix="imgid = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.imgid,jdbcType=CHAR}
+    <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Images">
+        <!--@mbg.generated-->
+        <!--@Table lm_imghub_db.imghub_images-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="imgid" jdbcType="CHAR" property="imgid"/>
+        <result column="path" jdbcType="CHAR" property="path"/>
+        <result column="thumb_path" jdbcType="CHAR" property="thumbPath"/>
+        <result column="storage" jdbcType="CHAR" property="storage"/>
+        <result column="ip" jdbcType="CHAR" property="ip"/>
+        <result column="ua" jdbcType="VARCHAR" property="ua"/>
+        <result column="date" jdbcType="TIMESTAMP" property="date"/>
+        <result column="user" jdbcType="VARCHAR" property="user"/>
+        <result column="compression" jdbcType="TINYINT" property="compression"/>
+        <result column="watermark" jdbcType="TINYINT" property="watermark"/>
+        <result column="level" jdbcType="VARCHAR" property="level"/>
+        <result column="others" jdbcType="LONGVARCHAR" property="others"/>
+        <result column="token" jdbcType="VARCHAR" property="token"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, imgid, `path`, thumb_path, `storage`, ip, ua, `date`, `user`, compression, watermark,
+        `level`, `others`, token
+    </sql>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update lm_imghub_db.imghub_images
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="imgid = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.imgid,jdbcType=CHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`path` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.path,jdbcType=CHAR}
+                </foreach>
+            </trim>
+            <trim prefix="thumb_path = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.thumbPath,jdbcType=CHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`storage` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.storage,jdbcType=CHAR}
+                </foreach>
+            </trim>
+            <trim prefix="ip = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.ip,jdbcType=CHAR}
+                </foreach>
+            </trim>
+            <trim prefix="ua = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.ua,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`date` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.date,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="`user` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.user,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="compression = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.compression,jdbcType=TINYINT}
+                </foreach>
+            </trim>
+            <trim prefix="watermark = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.watermark,jdbcType=TINYINT}
+                </foreach>
+            </trim>
+            <trim prefix="`level` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.level,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`others` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="token = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.token,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
         </foreach>
-      </trim>
-      <trim prefix="`path` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.path,jdbcType=CHAR}
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lm_imghub_db.imghub_images
+        (imgid, `path`, thumb_path, `storage`, ip, ua, `date`, `user`, compression, watermark,
+        `level`, `others`, token)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.imgid,jdbcType=CHAR}, #{item.path,jdbcType=CHAR}, #{item.thumbPath,jdbcType=CHAR},
+            #{item.storage,jdbcType=CHAR}, #{item.ip,jdbcType=CHAR}, #{item.ua,jdbcType=VARCHAR},
+            #{item.date,jdbcType=TIMESTAMP}, #{item.user,jdbcType=VARCHAR}, #{item.compression,jdbcType=TINYINT},
+            #{item.watermark,jdbcType=TINYINT}, #{item.level,jdbcType=VARCHAR}, #{item.others,jdbcType=LONGVARCHAR},
+            #{item.token,jdbcType=VARCHAR})
         </foreach>
-      </trim>
-      <trim prefix="thumb_path = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.thumbPath,jdbcType=CHAR}
-        </foreach>
-      </trim>
-      <trim prefix="`storage` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.storage,jdbcType=CHAR}
-        </foreach>
-      </trim>
-      <trim prefix="ip = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.ip,jdbcType=CHAR}
-        </foreach>
-      </trim>
-      <trim prefix="ua = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.ua,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="`date` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.date,jdbcType=TIMESTAMP}
-        </foreach>
-      </trim>
-      <trim prefix="`user` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.user,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="compression = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.compression,jdbcType=TINYINT}
-        </foreach>
-      </trim>
-      <trim prefix="watermark = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.watermark,jdbcType=TINYINT}
-        </foreach>
-      </trim>
-      <trim prefix="`level` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.level,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="`others` = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.others,jdbcType=LONGVARCHAR}
-        </foreach>
-      </trim>
-      <trim prefix="token = case" suffix="end,">
-        <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.token,jdbcType=VARCHAR}
-        </foreach>
-      </trim>
-    </trim>
-    where id in
-    <foreach close=")" collection="list" item="item" open="(" separator=", ">
-      #{item.id,jdbcType=INTEGER}
-    </foreach>
-  </update>
-  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into lm_imghub_db.imghub_images
-    (imgid, `path`, thumb_path, `storage`, ip, ua, `date`, `user`, compression, watermark, 
-      `level`, `others`, token)
-    values
-    <foreach collection="list" item="item" separator=",">
-      (#{item.imgid,jdbcType=CHAR}, #{item.path,jdbcType=CHAR}, #{item.thumbPath,jdbcType=CHAR}, 
-        #{item.storage,jdbcType=CHAR}, #{item.ip,jdbcType=CHAR}, #{item.ua,jdbcType=VARCHAR}, 
-        #{item.date,jdbcType=TIMESTAMP}, #{item.user,jdbcType=VARCHAR}, #{item.compression,jdbcType=TINYINT}, 
-        #{item.watermark,jdbcType=TINYINT}, #{item.level,jdbcType=VARCHAR}, #{item.others,jdbcType=LONGVARCHAR}, 
-        #{item.token,jdbcType=VARCHAR})
-    </foreach>
-  </insert>
-  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Images" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into lm_imghub_db.imghub_images
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      imgid,
-      `path`,
-      thumb_path,
-      `storage`,
-      ip,
-      ua,
-      `date`,
-      `user`,
-      compression,
-      watermark,
-      `level`,
-      `others`,
-      token,
-    </trim>
-    values
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      #{imgid,jdbcType=CHAR},
-      #{path,jdbcType=CHAR},
-      #{thumbPath,jdbcType=CHAR},
-      #{storage,jdbcType=CHAR},
-      #{ip,jdbcType=CHAR},
-      #{ua,jdbcType=VARCHAR},
-      #{date,jdbcType=TIMESTAMP},
-      #{user,jdbcType=VARCHAR},
-      #{compression,jdbcType=TINYINT},
-      #{watermark,jdbcType=TINYINT},
-      #{level,jdbcType=VARCHAR},
-      #{others,jdbcType=LONGVARCHAR},
-      #{token,jdbcType=VARCHAR},
-    </trim>
-    on duplicate key update 
-    <trim suffixOverrides=",">
-      <if test="id != null">
-        id = #{id,jdbcType=INTEGER},
-      </if>
-      imgid = #{imgid,jdbcType=CHAR},
-      `path` = #{path,jdbcType=CHAR},
-      thumb_path = #{thumbPath,jdbcType=CHAR},
-      `storage` = #{storage,jdbcType=CHAR},
-      ip = #{ip,jdbcType=CHAR},
-      ua = #{ua,jdbcType=VARCHAR},
-      `date` = #{date,jdbcType=TIMESTAMP},
-      `user` = #{user,jdbcType=VARCHAR},
-      compression = #{compression,jdbcType=TINYINT},
-      watermark = #{watermark,jdbcType=TINYINT},
-      `level` = #{level,jdbcType=VARCHAR},
-      `others` = #{others,jdbcType=LONGVARCHAR},
-      token = #{token,jdbcType=VARCHAR},
-    </trim>
-  </insert>
-  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Images" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into lm_imghub_db.imghub_images
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="imgid != null">
-        imgid,
-      </if>
-      <if test="path != null">
-        `path`,
-      </if>
-      <if test="thumbPath != null">
-        thumb_path,
-      </if>
-      <if test="storage != null">
-        `storage`,
-      </if>
-      <if test="ip != null">
-        ip,
-      </if>
-      <if test="ua != null">
-        ua,
-      </if>
-      <if test="date != null">
-        `date`,
-      </if>
-      <if test="user != null">
-        `user`,
-      </if>
-      <if test="compression != null">
-        compression,
-      </if>
-      <if test="watermark != null">
-        watermark,
-      </if>
-      <if test="level != null">
-        `level`,
-      </if>
-      <if test="others != null">
-        `others`,
-      </if>
-      <if test="token != null">
-        token,
-      </if>
-    </trim>
-    values
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="imgid != null">
-        #{imgid,jdbcType=CHAR},
-      </if>
-      <if test="path != null">
-        #{path,jdbcType=CHAR},
-      </if>
-      <if test="thumbPath != null">
-        #{thumbPath,jdbcType=CHAR},
-      </if>
-      <if test="storage != null">
-        #{storage,jdbcType=CHAR},
-      </if>
-      <if test="ip != null">
-        #{ip,jdbcType=CHAR},
-      </if>
-      <if test="ua != null">
-        #{ua,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null">
-        #{date,jdbcType=TIMESTAMP},
-      </if>
-      <if test="user != null">
-        #{user,jdbcType=VARCHAR},
-      </if>
-      <if test="compression != null">
-        #{compression,jdbcType=TINYINT},
-      </if>
-      <if test="watermark != null">
-        #{watermark,jdbcType=TINYINT},
-      </if>
-      <if test="level != null">
-        #{level,jdbcType=VARCHAR},
-      </if>
-      <if test="others != null">
-        #{others,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="token != null">
-        #{token,jdbcType=VARCHAR},
-      </if>
-    </trim>
-    on duplicate key update 
-    <trim suffixOverrides=",">
-      <if test="id != null">
-        id = #{id,jdbcType=INTEGER},
-      </if>
-      <if test="imgid != null">
-        imgid = #{imgid,jdbcType=CHAR},
-      </if>
-      <if test="path != null">
-        `path` = #{path,jdbcType=CHAR},
-      </if>
-      <if test="thumbPath != null">
-        thumb_path = #{thumbPath,jdbcType=CHAR},
-      </if>
-      <if test="storage != null">
-        `storage` = #{storage,jdbcType=CHAR},
-      </if>
-      <if test="ip != null">
-        ip = #{ip,jdbcType=CHAR},
-      </if>
-      <if test="ua != null">
-        ua = #{ua,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null">
-        `date` = #{date,jdbcType=TIMESTAMP},
-      </if>
-      <if test="user != null">
-        `user` = #{user,jdbcType=VARCHAR},
-      </if>
-      <if test="compression != null">
-        compression = #{compression,jdbcType=TINYINT},
-      </if>
-      <if test="watermark != null">
-        watermark = #{watermark,jdbcType=TINYINT},
-      </if>
-      <if test="level != null">
-        `level` = #{level,jdbcType=VARCHAR},
-      </if>
-      <if test="others != null">
-        `others` = #{others,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="token != null">
-        token = #{token,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Images" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lm_imghub_db.imghub_images
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            imgid,
+            `path`,
+            thumb_path,
+            `storage`,
+            ip,
+            ua,
+            `date`,
+            `user`,
+            compression,
+            watermark,
+            `level`,
+            `others`,
+            token,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            #{imgid,jdbcType=CHAR},
+            #{path,jdbcType=CHAR},
+            #{thumbPath,jdbcType=CHAR},
+            #{storage,jdbcType=CHAR},
+            #{ip,jdbcType=CHAR},
+            #{ua,jdbcType=VARCHAR},
+            #{date,jdbcType=TIMESTAMP},
+            #{user,jdbcType=VARCHAR},
+            #{compression,jdbcType=TINYINT},
+            #{watermark,jdbcType=TINYINT},
+            #{level,jdbcType=VARCHAR},
+            #{others,jdbcType=LONGVARCHAR},
+            #{token,jdbcType=VARCHAR},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            imgid = #{imgid,jdbcType=CHAR},
+            `path` = #{path,jdbcType=CHAR},
+            thumb_path = #{thumbPath,jdbcType=CHAR},
+            `storage` = #{storage,jdbcType=CHAR},
+            ip = #{ip,jdbcType=CHAR},
+            ua = #{ua,jdbcType=VARCHAR},
+            `date` = #{date,jdbcType=TIMESTAMP},
+            `user` = #{user,jdbcType=VARCHAR},
+            compression = #{compression,jdbcType=TINYINT},
+            watermark = #{watermark,jdbcType=TINYINT},
+            `level` = #{level,jdbcType=VARCHAR},
+            `others` = #{others,jdbcType=LONGVARCHAR},
+            token = #{token,jdbcType=VARCHAR},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.lmimghub.model.Images"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lm_imghub_db.imghub_images
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="imgid != null">
+                imgid,
+            </if>
+            <if test="path != null">
+                `path`,
+            </if>
+            <if test="thumbPath != null">
+                thumb_path,
+            </if>
+            <if test="storage != null">
+                `storage`,
+            </if>
+            <if test="ip != null">
+                ip,
+            </if>
+            <if test="ua != null">
+                ua,
+            </if>
+            <if test="date != null">
+                `date`,
+            </if>
+            <if test="user != null">
+                `user`,
+            </if>
+            <if test="compression != null">
+                compression,
+            </if>
+            <if test="watermark != null">
+                watermark,
+            </if>
+            <if test="level != null">
+                `level`,
+            </if>
+            <if test="others != null">
+                `others`,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="imgid != null">
+                #{imgid,jdbcType=CHAR},
+            </if>
+            <if test="path != null">
+                #{path,jdbcType=CHAR},
+            </if>
+            <if test="thumbPath != null">
+                #{thumbPath,jdbcType=CHAR},
+            </if>
+            <if test="storage != null">
+                #{storage,jdbcType=CHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=CHAR},
+            </if>
+            <if test="ua != null">
+                #{ua,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="user != null">
+                #{user,jdbcType=VARCHAR},
+            </if>
+            <if test="compression != null">
+                #{compression,jdbcType=TINYINT},
+            </if>
+            <if test="watermark != null">
+                #{watermark,jdbcType=TINYINT},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="others != null">
+                #{others,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="token != null">
+                #{token,jdbcType=VARCHAR},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="imgid != null">
+                imgid = #{imgid,jdbcType=CHAR},
+            </if>
+            <if test="path != null">
+                `path` = #{path,jdbcType=CHAR},
+            </if>
+            <if test="thumbPath != null">
+                thumb_path = #{thumbPath,jdbcType=CHAR},
+            </if>
+            <if test="storage != null">
+                `storage` = #{storage,jdbcType=CHAR},
+            </if>
+            <if test="ip != null">
+                ip = #{ip,jdbcType=CHAR},
+            </if>
+            <if test="ua != null">
+                ua = #{ua,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                `date` = #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="user != null">
+                `user` = #{user,jdbcType=VARCHAR},
+            </if>
+            <if test="compression != null">
+                compression = #{compression,jdbcType=TINYINT},
+            </if>
+            <if test="watermark != null">
+                watermark = #{watermark,jdbcType=TINYINT},
+            </if>
+            <if test="level != null">
+                `level` = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="others != null">
+                `others` = #{others,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="token != null">
+                token = #{token,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
 </mapper>
