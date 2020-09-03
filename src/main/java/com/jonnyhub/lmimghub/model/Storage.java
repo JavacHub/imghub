@@ -8,13 +8,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @ApiModel(value="com-jonnyhub-lmimghub-model-Storage")
 @Data
-@EqualsAndHashCode(callSuper=true)
 @TableName(value = "lm_imghub_db.imghub_storage")
-public class Storage extends BaseModel implements Serializable {
+public class Storage implements Serializable {
     @TableId(value = "id", type = IdType.INPUT)
     @ApiModelProperty(value="")
     private Integer id;
@@ -50,9 +48,9 @@ public class Storage extends BaseModel implements Serializable {
     /**
      * 存储引擎开关，ON：打开，OFF：关闭
      */
-    @TableField(value = "reversal")
+    @TableField(value = "option_switch")
     @ApiModelProperty(value="存储引擎开关，ON：打开，OFF：关闭")
-    private String reversal;
+    private String optionSwitch;
 
     /**
      * 存储引擎的权重，0-99，权重越高，越靠前
@@ -87,7 +85,7 @@ public class Storage extends BaseModel implements Serializable {
 
     public static final String COL_INFO = "info";
 
-    public static final String COL_REVERSAL = "reversal";
+    public static final String COL_OPTION_SWITCH = "option_switch";
 
     public static final String COL_WEIGHT = "weight";
 

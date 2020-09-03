@@ -9,14 +9,14 @@
     <result column="engine" jdbcType="VARCHAR" property="engine" />
     <result column="domains" jdbcType="VARCHAR" property="domains" />
     <result column="info" jdbcType="LONGVARCHAR" property="info" />
-    <result column="reversal" jdbcType="VARCHAR" property="reversal" />
+    <result column="option_switch" jdbcType="VARCHAR" property="optionSwitch" />
     <result column="weight" jdbcType="TINYINT" property="weight" />
     <result column="permission" jdbcType="BOOLEAN" property="permission" />
     <result column="others" jdbcType="VARCHAR" property="others" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, engine, domains, info, reversal, weight, permission, `others`
+    id, `name`, engine, domains, info, option_switch, weight, permission, `others`
   </sql>
   <update id="updateBatch" parameterType="java.util.List">
     <!--@mbg.generated-->
@@ -42,9 +42,9 @@
           when id = #{item.id,jdbcType=INTEGER} then #{item.info,jdbcType=LONGVARCHAR}
         </foreach>
       </trim>
-      <trim prefix="reversal = case" suffix="end,">
+      <trim prefix="option_switch = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=INTEGER} then #{item.reversal,jdbcType=VARCHAR}
+          when id = #{item.id,jdbcType=INTEGER} then #{item.optionSwitch,jdbcType=VARCHAR}
         </foreach>
       </trim>
       <trim prefix="weight = case" suffix="end,">
@@ -100,10 +100,10 @@
           </if>
         </foreach>
       </trim>
-      <trim prefix="reversal = case" suffix="end,">
+      <trim prefix="option_switch = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
-          <if test="item.reversal != null">
-            when id = #{item.id,jdbcType=INTEGER} then #{item.reversal,jdbcType=VARCHAR}
+          <if test="item.optionSwitch != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.optionSwitch,jdbcType=VARCHAR}
           </if>
         </foreach>
       </trim>
@@ -137,11 +137,11 @@
   <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into lm_imghub_db.imghub_storage
-    (`name`, engine, domains, info, reversal, weight, permission, `others`)
+    (`name`, engine, domains, info, option_switch, weight, permission, `others`)
     values
     <foreach collection="list" item="item" separator=",">
       (#{item.name,jdbcType=VARCHAR}, #{item.engine,jdbcType=VARCHAR}, #{item.domains,jdbcType=VARCHAR}, 
-        #{item.info,jdbcType=LONGVARCHAR}, #{item.reversal,jdbcType=VARCHAR}, #{item.weight,jdbcType=TINYINT}, 
+        #{item.info,jdbcType=LONGVARCHAR}, #{item.optionSwitch,jdbcType=VARCHAR}, #{item.weight,jdbcType=TINYINT}, 
         #{item.permission,jdbcType=BOOLEAN}, #{item.others,jdbcType=VARCHAR})
     </foreach>
   </insert>
@@ -156,7 +156,7 @@
       engine,
       domains,
       info,
-      reversal,
+      option_switch,
       weight,
       permission,
       `others`,
@@ -170,7 +170,7 @@
       #{engine,jdbcType=VARCHAR},
       #{domains,jdbcType=VARCHAR},
       #{info,jdbcType=LONGVARCHAR},
-      #{reversal,jdbcType=VARCHAR},
+      #{optionSwitch,jdbcType=VARCHAR},
       #{weight,jdbcType=TINYINT},
       #{permission,jdbcType=BOOLEAN},
       #{others,jdbcType=VARCHAR},
@@ -184,7 +184,7 @@
       engine = #{engine,jdbcType=VARCHAR},
       domains = #{domains,jdbcType=VARCHAR},
       info = #{info,jdbcType=LONGVARCHAR},
-      reversal = #{reversal,jdbcType=VARCHAR},
+      option_switch = #{optionSwitch,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=TINYINT},
       permission = #{permission,jdbcType=BOOLEAN},
       `others` = #{others,jdbcType=VARCHAR},
@@ -209,8 +209,8 @@
       <if test="info != null">
         info,
       </if>
-      <if test="reversal != null">
-        reversal,
+      <if test="optionSwitch != null">
+        option_switch,
       </if>
       <if test="weight != null">
         weight,
@@ -239,8 +239,8 @@
       <if test="info != null">
         #{info,jdbcType=LONGVARCHAR},
       </if>
-      <if test="reversal != null">
-        #{reversal,jdbcType=VARCHAR},
+      <if test="optionSwitch != null">
+        #{optionSwitch,jdbcType=VARCHAR},
       </if>
       <if test="weight != null">
         #{weight,jdbcType=TINYINT},
@@ -269,8 +269,8 @@
       <if test="info != null">
         info = #{info,jdbcType=LONGVARCHAR},
       </if>
-      <if test="reversal != null">
-        reversal = #{reversal,jdbcType=VARCHAR},
+      <if test="optionSwitch != null">
+        option_switch = #{optionSwitch,jdbcType=VARCHAR},
       </if>
       <if test="weight != null">
         weight = #{weight,jdbcType=TINYINT},

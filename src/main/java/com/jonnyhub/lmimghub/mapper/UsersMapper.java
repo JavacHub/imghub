@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface UsersMapper extends BaseMapper<Users>, BaseMapper {
+public interface UsersMapper extends BaseMapper<Users> {
     int updateBatch(List<Users> list);
 
     int updateBatchSelective(List<Users> list);

@@ -1,13 +1,13 @@
 package com.jonnyhub.lmimghub.dao.impl;
 
 import org.springframework.stereotype.Service;
-
+import javax.annotation.Resource;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
+import java.util.List;
 import com.jonnyhub.lmimghub.model.Options;
 import com.jonnyhub.lmimghub.mapper.OptionsMapper;
-import com.jonnyhub.lmimghub.dao.OptionsService;
+import com.jonnyhub.lmimghub.dao.impl.OptionsService;
 @Service
 public class OptionsServiceImpl extends ServiceImpl<OptionsMapper, Options> implements OptionsService{
 

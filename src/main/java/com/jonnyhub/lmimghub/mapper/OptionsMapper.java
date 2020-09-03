@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface OptionsMapper{
+public interface OptionsMapper extends BaseMapper<Options> {
     int updateBatch(List<Options> list);
 
     int updateBatchSelective(List<Options> list);

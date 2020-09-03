@@ -1,4 +1,4 @@
-package com.jonnyhub.lmimghub.dao;
+package com.jonnyhub.lmimghub.dao.impl;
 
 import java.util.List;
 import com.jonnyhub.lmimghub.model.Storage;

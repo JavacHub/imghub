@@ -8,13 +8,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @ApiModel(value="com-jonnyhub-lmimghub-model-Options")
 @Data
-@EqualsAndHashCode(callSuper=true)
 @TableName(value = "lm_imghub_db.imghub_options")
-public class Options extends BaseModel implements Serializable {
+public class Options implements Serializable {
     @TableId(value = "id", type = IdType.INPUT)
     @ApiModelProperty(value="")
     private Integer id;
@@ -36,9 +34,9 @@ public class Options extends BaseModel implements Serializable {
     /**
      * 选项开关，ON:打开;OFF:关闭（默认）
      */
-    @TableField(value = "reversal")
+    @TableField(value = "option_switch")
     @ApiModelProperty(value="选项开关，ON:打开;OFF:关闭（默认）")
-    private String reversal;
+    private String optionSwitch;
 
     private static final long serialVersionUID = 1L;
 
@@ -48,5 +46,5 @@ public class Options extends BaseModel implements Serializable {
 
     public static final String COL_VALUES = "values";
 
-    public static final String COL_REVERSAL = "reversal";
+    public static final String COL_OPTION_SWITCH = "option_switch";
 }

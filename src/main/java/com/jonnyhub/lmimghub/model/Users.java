@@ -9,13 +9,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @ApiModel(value="com-jonnyhub-lmimghub-model-Users")
 @Data
-@EqualsAndHashCode(callSuper=true)
 @TableName(value = "lm_imghub_db.imghub_users")
-public class Users extends BaseModel implements Serializable {
+public class Users implements Serializable {
     @TableId(value = "id", type = IdType.INPUT)
     @ApiModelProperty(value="")
     private Integer id;

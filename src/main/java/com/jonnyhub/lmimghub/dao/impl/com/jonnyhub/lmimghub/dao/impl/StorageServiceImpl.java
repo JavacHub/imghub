@@ -1,13 +1,13 @@
 package com.jonnyhub.lmimghub.dao.impl;
 
 import org.springframework.stereotype.Service;
-
+import javax.annotation.Resource;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
+import java.util.List;
 import com.jonnyhub.lmimghub.model.Storage;
 import com.jonnyhub.lmimghub.mapper.StorageMapper;
-import com.jonnyhub.lmimghub.dao.StorageService;
+import com.jonnyhub.lmimghub.dao.impl.StorageService;
 @Service
 public class StorageServiceImpl extends ServiceImpl<StorageMapper, Storage> implements StorageService{
 

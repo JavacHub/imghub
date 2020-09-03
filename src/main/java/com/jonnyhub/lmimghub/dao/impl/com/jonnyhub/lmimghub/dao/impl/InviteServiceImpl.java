@@ -1,13 +1,13 @@
 package com.jonnyhub.lmimghub.dao.impl;
 
 import org.springframework.stereotype.Service;
-
+import javax.annotation.Resource;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
+import java.util.List;
 import com.jonnyhub.lmimghub.model.Invite;
 import com.jonnyhub.lmimghub.mapper.InviteMapper;
-import com.jonnyhub.lmimghub.dao.InviteService;
+import com.jonnyhub.lmimghub.dao.impl.InviteService;
 @Service
 public class InviteServiceImpl extends ServiceImpl<InviteMapper, Invite> implements InviteService{
 

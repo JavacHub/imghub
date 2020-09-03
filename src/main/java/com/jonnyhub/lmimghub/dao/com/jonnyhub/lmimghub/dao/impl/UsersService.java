@@ -1,4 +1,4 @@
-package com.jonnyhub.lmimghub.dao;
+package com.jonnyhub.lmimghub.dao.impl;
 
 import com.jonnyhub.lmimghub.model.Users;
 import java.util.List;
