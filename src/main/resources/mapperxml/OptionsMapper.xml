@@ -4,10 +4,10 @@
     <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Options">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_options-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="values" jdbcType="LONGVARCHAR" property="values"/>
-        <result column="option_switch" jdbcType="VARCHAR" property="optionSwitch"/>
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="values" jdbcType="LONGVARCHAR" property="values" />
+        <result column="option_switch" jdbcType="VARCHAR" property="optionSwitch" />
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->

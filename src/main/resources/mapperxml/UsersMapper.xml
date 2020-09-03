@@ -4,20 +4,20 @@
     <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Users">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_users-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="uid" jdbcType="VARCHAR" property="uid"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="ip" jdbcType="VARCHAR" property="ip"/>
-        <result column="ua" jdbcType="VARCHAR" property="ua"/>
-        <result column="reg_time" jdbcType="TIMESTAMP" property="regTime"/>
-        <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin"/>
-        <result column="up_limit" jdbcType="INTEGER" property="upLimit"/>
-        <result column="status" jdbcType="LONGVARCHAR" property="status"/>
-        <result column="storage" jdbcType="VARCHAR" property="storage"/>
-        <result column="up_num" jdbcType="INTEGER" property="upNum"/>
-        <result column="others" jdbcType="LONGVARCHAR" property="others"/>
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="uid" jdbcType="VARCHAR" property="uid" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="ip" jdbcType="VARCHAR" property="ip" />
+        <result column="ua" jdbcType="VARCHAR" property="ua" />
+        <result column="reg_time" jdbcType="TIMESTAMP" property="regTime" />
+        <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+        <result column="up_limit" jdbcType="INTEGER" property="upLimit" />
+        <result column="status" jdbcType="LONGVARCHAR" property="status" />
+        <result column="storage" jdbcType="VARCHAR" property="storage" />
+        <result column="up_num" jdbcType="INTEGER" property="upNum" />
+        <result column="others" jdbcType="LONGVARCHAR" property="others" />
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->

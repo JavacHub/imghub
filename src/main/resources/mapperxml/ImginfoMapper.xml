@@ -4,17 +4,17 @@
     <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Imginfo">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_imginfo-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="imgid" jdbcType="VARCHAR" property="imgid"/>
-        <result column="mime" jdbcType="VARCHAR" property="mime"/>
-        <result column="width" jdbcType="DOUBLE" property="width"/>
-        <result column="height" jdbcType="DOUBLE" property="height"/>
-        <result column="views" jdbcType="INTEGER" property="views"/>
-        <result column="ext" jdbcType="VARCHAR" property="ext"/>
-        <result column="client_name" jdbcType="VARCHAR" property="clientName"/>
-        <result column="tags" jdbcType="VARCHAR" property="tags"/>
-        <result column="description" jdbcType="VARCHAR" property="description"/>
-        <result column="size" jdbcType="DOUBLE" property="size"/>
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="imgid" jdbcType="VARCHAR" property="imgid" />
+        <result column="mime" jdbcType="VARCHAR" property="mime" />
+        <result column="width" jdbcType="DOUBLE" property="width" />
+        <result column="height" jdbcType="DOUBLE" property="height" />
+        <result column="views" jdbcType="INTEGER" property="views" />
+        <result column="ext" jdbcType="VARCHAR" property="ext" />
+        <result column="client_name" jdbcType="VARCHAR" property="clientName" />
+        <result column="tags" jdbcType="VARCHAR" property="tags" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="size" jdbcType="DOUBLE" property="size" />
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->

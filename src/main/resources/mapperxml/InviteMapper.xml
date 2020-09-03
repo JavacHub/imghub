@@ -4,13 +4,13 @@
     <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Invite">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_invite-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="invite_code" jdbcType="VARCHAR" property="inviteCode"/>
-        <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime"/>
-        <result column="exp_time" jdbcType="TIMESTAMP" property="expTime"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="status" jdbcType="LONGVARCHAR" property="status"/>
-        <result column="others" jdbcType="LONGVARCHAR" property="others"/>
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+        <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+        <result column="exp_time" jdbcType="TIMESTAMP" property="expTime" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="status" jdbcType="LONGVARCHAR" property="status" />
+        <result column="others" jdbcType="LONGVARCHAR" property="others" />
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->

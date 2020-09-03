@@ -4,20 +4,20 @@
     <resultMap id="BaseResultMap" type="com.jonnyhub.lmimghub.model.Images">
         <!--@mbg.generated-->
         <!--@Table lm_imghub_db.imghub_images-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="imgid" jdbcType="CHAR" property="imgid"/>
-        <result column="path" jdbcType="CHAR" property="path"/>
-        <result column="thumb_path" jdbcType="CHAR" property="thumbPath"/>
-        <result column="storage" jdbcType="CHAR" property="storage"/>
-        <result column="ip" jdbcType="CHAR" property="ip"/>
-        <result column="ua" jdbcType="VARCHAR" property="ua"/>
-        <result column="date" jdbcType="TIMESTAMP" property="date"/>
-        <result column="user" jdbcType="VARCHAR" property="user"/>
-        <result column="compression" jdbcType="TINYINT" property="compression"/>
-        <result column="watermark" jdbcType="TINYINT" property="watermark"/>
-        <result column="level" jdbcType="VARCHAR" property="level"/>
-        <result column="others" jdbcType="LONGVARCHAR" property="others"/>
-        <result column="token" jdbcType="VARCHAR" property="token"/>
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="imgid" jdbcType="CHAR" property="imgid" />
+        <result column="path" jdbcType="CHAR" property="path" />
+        <result column="thumb_path" jdbcType="CHAR" property="thumbPath" />
+        <result column="storage" jdbcType="CHAR" property="storage" />
+        <result column="ip" jdbcType="CHAR" property="ip" />
+        <result column="ua" jdbcType="VARCHAR" property="ua" />
+        <result column="date" jdbcType="TIMESTAMP" property="date" />
+        <result column="user" jdbcType="VARCHAR" property="user" />
+        <result column="compression" jdbcType="TINYINT" property="compression" />
+        <result column="watermark" jdbcType="TINYINT" property="watermark" />
+        <result column="level" jdbcType="VARCHAR" property="level" />
+        <result column="others" jdbcType="LONGVARCHAR" property="others" />
+        <result column="token" jdbcType="VARCHAR" property="token" />
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
