@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface StorageMapper extends BaseMapper<Storage>, BaseMapper {
+public interface StorageMapper extends BaseMapper<Storage> {
     int updateBatch(List<Storage> list);
 
     int updateBatchSelective(List<Storage> list);

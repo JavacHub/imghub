@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface InviteMapper extends BaseMapper<Invite>, BaseMapper {
+public interface InviteMapper extends BaseMapper<Invite> {
     int updateBatch(List<Invite> list);
 
     int updateBatchSelective(List<Invite> list);

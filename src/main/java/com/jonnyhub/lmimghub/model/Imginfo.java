@@ -8,13 +8,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @ApiModel(value="com-jonnyhub-lmimghub-model-Imginfo")
 @Data
-@EqualsAndHashCode(callSuper=true)
 @TableName(value = "lm_imghub_db.imghub_imginfo")
-public class Imginfo extends BaseModel implements Serializable {
+public class Imginfo implements Serializable {
     /**
      * 图片信息id，自增
      */

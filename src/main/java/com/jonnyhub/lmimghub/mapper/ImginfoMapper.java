@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface ImginfoMapper extends BaseMapper<Imginfo>, BaseMapper {
+public interface ImginfoMapper extends BaseMapper<Imginfo> {
     int updateBatch(List<Imginfo> list);
 
     int updateBatchSelective(List<Imginfo> list);
