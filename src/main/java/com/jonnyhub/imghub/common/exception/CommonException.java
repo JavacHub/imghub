@@ -4,7 +4,7 @@ import com.jonnyhub.imghub.common.enums.SystemCodeEnum;
 
 import lombok.Getter;
 
-public class CommonException extends RuntimeException{
+public class CommonException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     @Getter

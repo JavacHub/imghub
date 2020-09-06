@@ -12,8 +12,8 @@ import org.springframework.util.CollectionUtils;
 
 /**
  * bean转化类
- * @author Starry
  *
+ * @author Starry
  */
 public class BeanConvertor {
 
@@ -34,8 +34,8 @@ public class BeanConvertor {
     /**
      * 方法说明：对象转换
      *
-     * @param source 原对象
-     * @param target 目标对象
+     * @param source           原对象
+     * @param target           目标对象
      * @param ignoreProperties 排除要copy的属性
      * @return
      */
@@ -58,8 +58,8 @@ public class BeanConvertor {
     /**
      * 方法说明：对象转换(List)
      *
-     * @param list 原对象
-     * @param target 目标对象
+     * @param list             原对象
+     * @param target           目标对象
      * @param ignoreProperties 排除要copy的属性
      * @return
      */
@@ -77,7 +77,7 @@ public class BeanConvertor {
     /**
      * 方法说明：map转化为对象
      *
-     * @param map 原 map
+     * @param map   原 map
      * @param clazz 目标对象
      * @return
      * @throws InstantiationException

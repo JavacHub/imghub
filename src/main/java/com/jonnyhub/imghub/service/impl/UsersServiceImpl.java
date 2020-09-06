@@ -1,6 +1,8 @@
 package com.jonnyhub.imghub.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.jonnyhub.imghub.common.result.ServiceResult;
 import com.jonnyhub.imghub.common.result.enums.ResultCodeEnum;
@@ -12,6 +14,7 @@ import com.jonnyhub.imghub.vo.UserVO;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -42,7 +45,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public ServiceResult<UserVO> register(UserVO userVO) {
+    public ServiceResult<Boolean> register(UserVO userVO) {
         if (userVO == null || StringUtils.isAnyBlank(userVO.getUid(), userVO.getUserName(), userVO.getPasswd(), userVO.getEmail(),
                 userVO.getRegUa(), userVO.getRegIp()) || userVO.getPhoneNum() == null || userVO.getPermission() == null) {
             return new ServiceResult<>(ResultCodeEnum.PARAM_IS_NULL);
@@ -55,7 +58,7 @@ public class UsersServiceImpl implements UsersService {
         userVO.setUploadTotal(0L);
         userVO.setGmtCreate(new Date());
         int insert = userMapper.insert(BeanConvertor.convertBean(userVO, User.class));
-        return insert > 0 ? new ServiceResult<>(selectById((long) insert).getData()) : new ServiceResult<>(ResultCodeEnum.INSERT_DB_FAILED);
+        return insert > 0 ? new ServiceResult<>(true, ResultCodeEnum.SUCCESS) : new ServiceResult<>(ResultCodeEnum.INSERT_DB_FAILED);
     }
 
     @Override
@@ -65,6 +68,18 @@ public class UsersServiceImpl implements UsersService {
         }
         int updateByCondition = userMapper.updateByCondition(BeanConvertor.convertBean(userVO, User.class));
         return updateByCondition > 0 ? selectById(userVO.getId()) : new ServiceResult<>(ResultCodeEnum.UPDATE_DB_FAILED);
+    }
+
+    @Override
+    public ServiceResult<UserVO> selectUser(Long id, String uid, String userName, Long phoneNum, String email) {
+        if (id == null && phoneNum == null && StringUtils.isAnyBlank(uid, userName, email)) {
+            return new ServiceResult<>(ResultCodeEnum.PARAM_IS_NULL);
+        }
+        User user = userMapper.selectByPrimaryKey(id, uid, userName, phoneNum, email);
+        if (user == null) {
+            return new ServiceResult<>(ResultCodeEnum.QUERY_IS_NOT_EXIT);
+        }
+        return new ServiceResult<>(BeanConvertor.convertBean(user, UserVO.class), ResultCodeEnum.SUCCESS);
     }
 
     @Override
@@ -100,6 +115,35 @@ public class UsersServiceImpl implements UsersService {
         User user = userMapper.selectByPrimaryKey(null, null, null, null, email);
         UserVO userVO = BeanConvertor.convertBean(user, UserVO.class);
         return new ServiceResult<>(userVO, ResultCodeEnum.SUCCESS);
+    }
+
+    @Override
+    public ServiceResult<List<UserVO>> selectAllUserList() {
+        List<UserVO> userVOList = convertUserVOList(userMapper.selectAllList());
+        return new ServiceResult<>(userVOList, ResultCodeEnum.SUCCESS);
+    }
+
+    @Override
+    public ServiceResult<List<UserVO>> selectByCondition(UserVO userVO) {
+        List<UserVO> userVOList = convertUserVOList(userMapper.selectByCondition(BeanConvertor.convertBean(userVO, User.class)));
+        return new ServiceResult<>(userVOList, ResultCodeEnum.SUCCESS);
+    }
+
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    //\\\\\\\\\\\\\\\\\\\\\\      ****************     \\\\\\\\\\\\\\\\\\\\\\\\\\
+    //\\\\\\\\\\\\\\\\\\\\\\      ***  私有方法  ***     \\\\\\\\\\\\\\\\\\\\\\\\\\
+    //\\\\\\\\\\\\\\\\\\\\\\      ****************     \\\\\\\\\\\\\\\\\\\\\\\\\\
+    //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    private List<UserVO> convertUserVOList(List<User> userList) {
+        if (CollectionUtils.isEmpty(userList)) {
+            new ArrayList<>();
+        }
+        List<UserVO> userVOList = new ArrayList<>();
+        for (User user : userList) {
+            userVOList.add(BeanConvertor.convertBean(user, UserVO.class));
+        }
+        return userVOList;
     }
 
 }

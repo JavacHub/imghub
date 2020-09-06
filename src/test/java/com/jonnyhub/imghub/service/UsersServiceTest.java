@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.jonnyhub.imghub.common.result.ServiceResult;
 import com.jonnyhub.imghub.vo.UserVO;
 
+import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +40,15 @@ class UsersServiceTest {
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Safari/605.1.15");
         userVO.setGmtCreate(new Date());
         System.out.println(userVO.toString());
-        ServiceResult<UserVO> register = usersService.register(userVO);
+        ServiceResult<Boolean> register = usersService.register(userVO);
         System.out.println("\n\n" + register.toString());
     }
 
     @Test
-    void login() {
+    void testLogin() {
+        Long id = 1L;
+        ServiceResult<UserVO> result = usersService.selectById(id);
+        System.out.println(JSON.toJSONString(result));
     }
 
     /**

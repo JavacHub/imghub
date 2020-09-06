@@ -31,7 +31,22 @@ public interface UserMapper {
             @Param("phoneNum") Long phoneNum, @Param("email") String email);
 
     /**
-     * 批处理更新
+     * select all
+     *
+     * @return {@link List<User>}
+     */
+    List<User> selectAllList();
+
+    /**
+     * 查询
+     *
+     * @param user 用户实体
+     * @return {@link List<User>}
+     */
+    List<User> selectByCondition(User user);
+
+    /**
+     * 更新
      *
      * @param user 用户实体
      * @return int

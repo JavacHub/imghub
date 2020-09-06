@@ -13,6 +13,21 @@ public class BaseApi<T> {
 
     private T data;
 
+    /**
+     * 默认构造函数
+     */
+    public BaseApi() {
+    }
+
+    /**
+     * 构造函数. 默认构建成功数据
+     *
+     * @param data the data
+     */
+    public BaseApi(T data) {
+        this.data = data;
+    }
+
     public BaseResult<T> buildingBaseResult(ServiceResult<T> serviceResult) {
         BaseResult<T> baseResult = new BaseResult<T>();
         baseResult.setSuccess(serviceResult.isSuccess());
@@ -38,21 +53,6 @@ public class BaseApi<T> {
         baseResult.setResultCode(resultCode);
         baseResult.setResultMsg(resultMsg);
         return baseResult;
-    }
-
-    /**
-     * 默认构造函数
-     */
-    public BaseApi() {
-    }
-
-    /**
-     * 构造函数. 默认构建成功数据
-     *
-     * @param data the data
-     */
-    public BaseApi(T data) {
-        this.data = data;
     }
 
 }

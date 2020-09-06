@@ -1,7 +1,9 @@
 package com.jonnyhub.imghub.mapper;
 
-import com.jonnyhub.imghub.entity.ImageInfo;
 import java.util.List;
+
+import com.jonnyhub.imghub.entity.ImageInfo;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -9,6 +11,7 @@ import org.apache.ibatis.annotations.Param;
 public interface ImageInfoMapper {
     /**
      * insert record to table
+     *
      * @param record the record
      * @return insert count
      */
@@ -16,6 +19,7 @@ public interface ImageInfoMapper {
 
     /**
      * select by primary key
+     *
      * @param id primary key
      * @return object by primary key
      */

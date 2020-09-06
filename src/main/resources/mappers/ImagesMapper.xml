@@ -41,11 +41,11 @@
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.imghub.entity.Images" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into images (image_uid, image_path, thumb_path, storage_engine, storage_ip,
-                            storage_ua, upload_time, `owner`, compression, watermark, `level`,
-                            `others`, token, gmt_create)
+        storage_ua, upload_time, `owner`, compression, watermark, `level`,
+        `others`, token, gmt_create)
         values (#{imageUid}, #{imagePath}, #{thumbPath}, #{storageEngine}, #{storageIp},
-                #{storageUa}, #{uploadTime}, #{owner}, #{compression}, #{watermark}, #{level},
-                #{others}, #{token}, #{gmtCreate})
+        #{storageUa}, #{uploadTime}, #{owner}, #{compression}, #{watermark}, #{level},
+        #{others}, #{token}, #{gmtCreate})
     </insert>
     <update id="updateBatch" parameterType="java.util.List">
         <!--@mbg.generated-->
@@ -125,13 +125,13 @@
     <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into images
-                (image_uid, image_path, thumb_path, storage_engine, storage_ip, storage_ua, upload_time,
-                 `owner`, compression, watermark, `level`, `others`, token, gmt_create)
-                values
+        (image_uid, image_path, thumb_path, storage_engine, storage_ip, storage_ua, upload_time,
+        `owner`, compression, watermark, `level`, `others`, token, gmt_create)
+        values
         <foreach collection="list" item="item" separator=",">
             (#{item.imageUid}, #{item.imagePath}, #{item.thumbPath}, #{item.storageEngine}, #{item.storageIp},
-             #{item.storageUa}, #{item.uploadTime}, #{item.owner}, #{item.compression}, #{item.watermark},
-             #{item.level}, #{item.others}, #{item.token}, #{item.gmtCreate})
+            #{item.storageUa}, #{item.uploadTime}, #{item.owner}, #{item.compression}, #{item.watermark},
+            #{item.level}, #{item.others}, #{item.token}, #{item.gmtCreate})
         </foreach>
     </insert>
 </mapper>

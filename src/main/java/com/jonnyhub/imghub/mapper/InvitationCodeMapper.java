@@ -1,8 +1,9 @@
 package com.jonnyhub.imghub.mapper;
 
+import java.util.List;
+
 import com.jonnyhub.imghub.entity.InvitationCode;
 
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,6 +11,7 @@ import org.apache.ibatis.annotations.Param;
 public interface InvitationCodeMapper {
     /**
      * insert record to table
+     *
      * @param record the record
      * @return insert count
      */
@@ -17,6 +19,7 @@ public interface InvitationCodeMapper {
 
     /**
      * select by primary key
+     *
      * @param id primary key
      * @return object by primary key
      */
