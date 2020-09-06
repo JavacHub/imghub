@@ -44,9 +44,7 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public ServiceResult<UserVO> register(UserVO userVO) {
         if (userVO == null || StringUtils.isAnyBlank(userVO.getUid(), userVO.getUserName(), userVO.getPasswd(), userVO.getEmail(),
-                userVO.getRegUa(),
-                userVO.getRegIp())
-                || userVO.getPhoneNum() == null || userVO.getPermission() == null) {
+                userVO.getRegUa(), userVO.getRegIp()) || userVO.getPhoneNum() == null || userVO.getPermission() == null) {
             return new ServiceResult<>(ResultCodeEnum.PARAM_IS_NULL);
         }
         userVO.setGender(0);
