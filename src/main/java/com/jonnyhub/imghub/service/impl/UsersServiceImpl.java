@@ -10,6 +10,7 @@ import com.jonnyhub.imghub.entity.User;
 import com.jonnyhub.imghub.mapper.UserMapper;
 import com.jonnyhub.imghub.service.UsersService;
 import com.jonnyhub.imghub.utils.BeanConvertor;
+import com.jonnyhub.imghub.utils.userutils.CryptUtils;
 import com.jonnyhub.imghub.vo.UserVO;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,12 +32,12 @@ public class UsersServiceImpl implements UsersService {
             return new ServiceResult<>(false, ResultCodeEnum.PARAM_IS_NULL);
         }
         UserVO selectUserVO = selectByUid(userVO.getUid()).getData();
-        boolean loginCheck = false;
+        boolean loginCheck;
         loginCheck = userVO.getPhoneNum().equals(selectUserVO.getPhoneNum());
         loginCheck = loginCheck && StringUtils.equals(userVO.getUid(), selectUserVO.getUid())
                 && StringUtils.equalsIgnoreCase(userVO.getNickName(), selectUserVO.getNickName())
                 && StringUtils.equals(userVO.getUid(), selectUserVO.getUid())
-                && StringUtils.equals(userVO.getPasswd(), selectUserVO.getPasswd())
+                && StringUtils.equals(userVO.getPasswd(), CryptUtils.Decrypt(selectUserVO.getPasswd()))
                 && StringUtils.equalsIgnoreCase(userVO.getEmail(), selectUserVO.getEmail());
         // 更新最后登录时间
         selectUserVO.setLastLogin(new Date());
@@ -57,6 +58,7 @@ public class UsersServiceImpl implements UsersService {
         userVO.setUploadLimit(20);
         userVO.setUploadTotal(0L);
         userVO.setGmtCreate(new Date());
+        userVO.setPasswd(CryptUtils.Encrypt(userVO.getPasswd()));
         int insert = userMapper.insert(BeanConvertor.convertBean(userVO, User.class));
         return insert > 0 ? new ServiceResult<>(true, ResultCodeEnum.SUCCESS) : new ServiceResult<>(ResultCodeEnum.INSERT_DB_FAILED);
     }

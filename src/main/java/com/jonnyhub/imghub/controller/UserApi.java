@@ -4,10 +4,17 @@ import java.util.List;
 
 import com.jonnyhub.imghub.common.result.BaseResult;
 import com.jonnyhub.imghub.common.result.ServiceResult;
+import com.jonnyhub.imghub.common.result.enums.CommonResultEnum;
 import com.jonnyhub.imghub.service.UsersService;
 import com.jonnyhub.imghub.vo.UserVO;
 
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.asymmetric.Sign;
+import cn.hutool.crypto.asymmetric.SignAlgorithm;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,5 +93,40 @@ public class UserApi extends BaseApi {
     public BaseResult<List<UserVO>> getAllList(UserVO user) {
         ServiceResult<List<UserVO>> listServiceResult = usersService.selectByCondition(user);
         return buildingBaseResult(listServiceResult);
+    }
+
+    /**
+     * 根据 用户名和密码生成签名
+     *
+     * @return {@link BaseResult <byte[]>}
+     */
+    @RequestMapping(value = "/genUserSign", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    public BaseResult<byte[]> genUserSign(UserVO user) {
+        if (StringUtils.isAnyBlank(user.getUserName(), user.getPasswd())) {
+            return new BaseResult<>(CommonResultEnum.REQUIRED_PARAMETERS_ARE_EMPTY);
+        }
+        byte[] content = (user.getUserName() + user.getPasswd()).getBytes();
+        Sign sign = SecureUtil.sign(SignAlgorithm.MD5withRSA);
+        //签名
+        byte[] signed = sign.sign(content);
+        return new BaseResult<>(CommonResultEnum.SUCCESS, signed);
+    }
+
+    /**
+     * 根据 用户名和密码生成签名
+     *
+     * @return {@link BaseResult <Boolean>}
+     */
+    @RequestMapping(value = "/{id}/verifySign", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    public BaseResult<Boolean> genUserSign(@Param("signature") String signature, @PathVariable("id") Long id) {
+        if (StringUtils.isBlank(signature)) {
+            return new BaseResult<>(CommonResultEnum.REQUIRED_PARAMETERS_ARE_EMPTY);
+        }
+        Sign sign = SecureUtil.sign(SignAlgorithm.MD5withRSA);
+        UserVO userVO = usersService.selectById(id).getData();
+        String content = userVO.getUserName() + userVO.getPasswd();
+        // //验证签名
+        boolean verify = sign.verify(content.getBytes(), signature.getBytes());
+        return new BaseResult<>(CommonResultEnum.SUCCESS, verify);
     }
 }
