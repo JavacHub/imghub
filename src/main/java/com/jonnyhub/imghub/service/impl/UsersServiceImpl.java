@@ -27,20 +27,44 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public ServiceResult<Boolean> login(UserVO userVO) {
         // 参数校验
-        if (userVO == null || StringUtils.isAnyBlank(userVO.getUid(), userVO.getUserName(), userVO.getPasswd(), userVO.getEmail())
-                || userVO.getPhoneNum() == null) {
+        if (userVO == null || StringUtils.isBlank(userVO.getPasswd())) {
             return new ServiceResult<>(false, ResultCodeEnum.PARAM_IS_NULL);
         }
-        UserVO selectUserVO = selectByUid(userVO.getUid()).getData();
-        boolean loginCheck;
-        loginCheck = userVO.getPhoneNum().equals(selectUserVO.getPhoneNum());
-        loginCheck = loginCheck && StringUtils.equals(userVO.getUid(), selectUserVO.getUid())
-                && StringUtils.equalsIgnoreCase(userVO.getNickName(), selectUserVO.getNickName())
-                && StringUtils.equals(userVO.getUid(), selectUserVO.getUid())
-                && StringUtils.equals(userVO.getPasswd(), CryptUtils.Decrypt(selectUserVO.getPasswd()))
-                && StringUtils.equalsIgnoreCase(userVO.getEmail(), selectUserVO.getEmail());
+        if (StringUtils.isNoneBlank(userVO.getUid(), userVO.getUserName(), userVO.getEmail()) && userVO.getPhoneNum() == null) {
+            return new ServiceResult<>(false, ResultCodeEnum.PARAM_IS_NULL);
+        }
+        UserVO selectUserVO = null;
+        if (StringUtils.isNotBlank(userVO.getUid())) {
+            selectUserVO = selectByUid(userVO.getUid()).getData();
+        }
+        if (selectUserVO == null && StringUtils.isNotBlank(userVO.getUserName())) {
+            selectUserVO = selectByUserName(userVO.getUserName()).getData();
+        }
+        if (selectUserVO == null && StringUtils.isNotBlank(userVO.getEmail())) {
+            selectUserVO = selectByEmail(userVO.getEmail()).getData();
+        }
+        if (selectUserVO == null && userVO.getPhoneNum() != null) {
+            selectUserVO = selectByPhoneNum(userVO.getPhoneNum()).getData();
+        }
+        if (selectUserVO == null) {
+            return new ServiceResult<>(false, ResultCodeEnum.QUERY_IS_NOT_EXIT);
+        }
+        boolean loginCheck = true;
+        if (userVO.getPhoneNum() != null) {
+            loginCheck = userVO.getPhoneNum().equals(selectUserVO.getPhoneNum());
+        }
+        if (StringUtils.isNotBlank(userVO.getUserName())) {
+            loginCheck = userVO.getUserName().equals(selectUserVO.getUserName()) && loginCheck;
+        }
+        if (StringUtils.isNotBlank(userVO.getEmail())) {
+            loginCheck = userVO.getEmail().equals(selectUserVO.getEmail()) && loginCheck;
+        }
+        if (StringUtils.isNotBlank(userVO.getUid())) {
+            loginCheck = userVO.getUid().equals(selectUserVO.getUid()) && loginCheck;
+        }
         // 更新最后登录时间
         selectUserVO.setLastLogin(new Date());
+        selectUserVO.setPasswd(null);
         updateUser(selectUserVO);
         return new ServiceResult<>(loginCheck, ResultCodeEnum.SUCCESS);
     }
@@ -67,6 +91,9 @@ public class UsersServiceImpl implements UsersService {
     public ServiceResult<UserVO> updateUser(UserVO userVO) {
         if (userVO == null || userVO.getId() == null) {
             return new ServiceResult<>(ResultCodeEnum.PARAM_IS_NULL);
+        }
+        if (StringUtils.isNotBlank(userVO.getPasswd())) {
+            userVO.setPasswd(CryptUtils.Encrypt(userVO.getPasswd()));
         }
         int updateByCondition = userMapper.updateByCondition(BeanConvertor.convertBean(userVO, User.class));
         return updateByCondition > 0 ? selectById(userVO.getId()) : new ServiceResult<>(ResultCodeEnum.UPDATE_DB_FAILED);
