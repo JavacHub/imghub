@@ -117,7 +117,7 @@ public class UserApi extends BaseApi {
      *
      * @return {@link BaseResult <Boolean>}
      */
-    @RequestMapping(value = "/{id}/verifySign", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/{id}/verifySign", method = RequestMethod.GET)
     public BaseResult<Boolean> genUserSign(@Param("signature") String signature, @PathVariable("id") Long id) {
         if (StringUtils.isBlank(signature)) {
             return new BaseResult<>(CommonResultEnum.REQUIRED_PARAMETERS_ARE_EMPTY);

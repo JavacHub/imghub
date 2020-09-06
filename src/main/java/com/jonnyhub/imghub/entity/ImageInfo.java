@@ -7,53 +7,53 @@ import lombok.Data;
 
 @Data
 public class ImageInfo implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long   serialVersionUID = 1L;
     /**
      * 图片信息id，自增
      */
-    private Long id;
+    private              Long   id;
     /**
      * 图片uid，唯一，和images.imgid关联
      */
-    private String imageUid;
+    private              String imageUid;
     /**
      * 图片MIME类型
      */
-    private String mimeType;
+    private              String mimeType;
     /**
      * 图片宽
      */
-    private Double width;
+    private              Double width;
     /**
      * 图片高
      */
-    private Double height;
+    private              Double height;
     /**
      * 图片浏览次数
      */
-    private Long viewTimes;
+    private              Long   viewTimes;
     /**
      * 图片扩展名
      */
-    private String extName;
+    private              String extName;
     /**
      * 图片原始文件名
      */
-    private String clientName;
+    private              String clientName;
     /**
      * 图片标签
      */
-    private String tags;
+    private              String tags;
     /**
      * 图片描述
      */
-    private String description;
+    private              String description;
     /**
      * 图片大小，单位kb
      */
-    private Double imagesSize;
+    private              Double imagesSize;
     /**
      * 创建时间
      */
-    private Date gmtCreate;
+    private              Date   gmtCreate;
 }

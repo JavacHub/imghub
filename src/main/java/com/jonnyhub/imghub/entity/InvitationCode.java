@@ -7,33 +7,33 @@ import lombok.Data;
 
 @Data
 public class InvitationCode implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long   serialVersionUID = 1L;
     /**
      * 主键Id，自增
      */
-    private Long id;
+    private              Long   id;
     /**
      * 邀请码
      */
-    private String inviteCode;
+    private              String inviteCode;
     /**
      * 用户邮箱
      */
-    private String email;
+    private              String email;
     /**
      * 邀请码状态（0: 可用 1: 已使用 2: 已过期）
      */
-    private Byte status;
+    private              Byte   status;
     /**
      * 其它信息
      */
-    private String extInfo;
+    private              String extInfo;
     /**
      * 过期时间
      */
-    private Date gmtExpiration;
+    private              Date   gmtExpiration;
     /**
      * 创建时间
      */
-    private Date gmtCreate;
+    private              Date   gmtCreate;
 }
