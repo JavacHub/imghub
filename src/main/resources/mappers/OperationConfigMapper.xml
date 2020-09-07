@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jonnyhub.imghub.mapper.OperationConfigMapper">
-    <resultMap id="BaseResultMap" type="com.jonnyhub.imghub.entity.OperationConfig">
+<mapper namespace="cn.lmsite.imghub.mapper.OperationConfigMapper">
+    <resultMap id="BaseResultMap" type="cn.lmsite.imghub.entity.OperationConfig">
         <!--@mbg.generated-->
         <!--@Table operation_config-->
         <id column="id" property="id"/>
@@ -21,7 +21,7 @@
         from operation_config
         where id = #{id}
     </select>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.imghub.entity.OperationConfig" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.lmsite.imghub.entity.OperationConfig" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into operation_config (`name`, `values`, engine_statue, gmt_create)
         values (#{name}, #{values}, #{engineStatue}, #{gmtCreate})

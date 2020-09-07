@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jonnyhub.imghub.mapper.ImagesMapper">
-    <resultMap id="BaseResultMap" type="com.jonnyhub.imghub.entity.Images">
+<mapper namespace="cn.lmsite.imghub.mapper.ImagesMapper">
+    <resultMap id="BaseResultMap" type="cn.lmsite.imghub.entity.Images">
         <!--@mbg.generated-->
         <!--@Table images-->
         <id column="id" property="id"/>
@@ -38,7 +38,7 @@
             and image_uid = #{imageUid}
         </if>
     </select>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.imghub.entity.Images" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.lmsite.imghub.entity.Images" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into images (image_uid, image_path, thumb_path, storage_engine, storage_ip,
         storage_ua, upload_time, `owner`, compression, watermark, `level`,

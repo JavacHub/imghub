@@ -1,9 +1,15 @@
 mybatis:
   mapperLocations: classpath:mappers/*.xml
-  typeAliasesPackage: com.jonnyhub.lmimghub.entity
+  typeAliasesPackage: cn.lmsite.imghub.entity
+
 server:
-  port: 8080
+  port: 7218
+  servlet:
+    context-path: /api/
+
 spring:
+  jpa:
+    open-in-view: false
   datasource:
     password: rain8240
     username: root

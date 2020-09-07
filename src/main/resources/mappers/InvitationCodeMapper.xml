@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jonnyhub.imghub.mapper.InvitationCodeMapper">
-    <resultMap id="BaseResultMap" type="com.jonnyhub.imghub.entity.InvitationCode">
+<mapper namespace="cn.lmsite.imghub.mapper.InvitationCodeMapper">
+    <resultMap id="BaseResultMap" type="cn.lmsite.imghub.entity.InvitationCode">
         <!--@mbg.generated-->
         <!--@Table invitation_code-->
         <id column="id" property="id"/>
@@ -23,7 +23,7 @@
         from invitation_code
         where id = #{id}
     </select>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jonnyhub.imghub.entity.InvitationCode" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.lmsite.imghub.entity.InvitationCode" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into invitation_code (invite_code, email, `status`, ext_info, gmt_expiration, gmt_create
         )
