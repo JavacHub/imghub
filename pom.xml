@@ -132,10 +132,57 @@
     </repositories>
     
     <build>
+        <finalName>imghub-server</finalName>
+        <!-- 定义了变量配置文件的地址 -->
+        <filters>
+            <filter>src/main/resources/config/application-${env}.yml</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>cn.lmsite.lmfavor.LmfavorApplication</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>./</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                    <!-- 过滤掉不希望包含在jar中的文件  -->
+                    <!--<excludes>-->
+                    <!--    <exclude>*.xml</exclude>-->
+                    <!--    <exclude>spring/**</exclude>-->
+                    <!--    <exclude>config/**</exclude>-->
+                    <!--</excludes>-->
+                    <!-- 添加文件到jar中的文件  -->
+                    <!--<includes>-->
+                    <!--    <include></include>-->
+                    <!--</includes>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
             </plugin>
         </plugins>
     </build>
